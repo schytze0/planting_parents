@@ -21,9 +21,9 @@ def load_keras_model(file_path):
     return tf.keras.models.load_model(file_path)
 
 # Function to load PyTorch model
-def load_pytorch_model(file_path):
+def load_pytorch_model(file_path, device="cpu"):
     model = CustomResNet50(num_classes=38)
-    model.load_state_dict(torch.load(file_path))
+    model.load_state_dict(torch.load(file_path, map_location=device))
     model.eval()
     return model
 
